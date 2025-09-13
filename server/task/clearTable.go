@@ -3,7 +3,7 @@ package task
 import (
 	"errors"
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common"
+	"github.com/kuihuar/huasu-admin/server/model/common"
 	"time"
 
 	"gorm.io/gorm"

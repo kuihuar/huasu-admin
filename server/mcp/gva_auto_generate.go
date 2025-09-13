@@ -11,12 +11,12 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	common "github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	model "github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/service"
-	systemService "github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	"github.com/kuihuar/huasu-admin/server/global"
+	common "github.com/kuihuar/huasu-admin/server/model/common/request"
+	model "github.com/kuihuar/huasu-admin/server/model/system"
+	"github.com/kuihuar/huasu-admin/server/model/system/request"
+	"github.com/kuihuar/huasu-admin/server/service"
+	systemService "github.com/kuihuar/huasu-admin/server/service/system"
 	"github.com/mark3labs/mcp-go/mcp"
 	"gorm.io/gorm"
 )

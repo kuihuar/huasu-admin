@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/docs"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/middleware"
-	"github.com/flipped-aurora/gin-vue-admin/server/router"
 	"github.com/gin-gonic/gin"
+	"github.com/kuihuar/huasu-admin/server/docs"
+	"github.com/kuihuar/huasu-admin/server/global"
+	"github.com/kuihuar/huasu-admin/server/middleware"
+	"github.com/kuihuar/huasu-admin/server/router"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )

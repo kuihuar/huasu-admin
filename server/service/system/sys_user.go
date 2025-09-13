@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common"
-	systemReq "github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"github.com/kuihuar/huasu-admin/server/model/common"
+	systemReq "github.com/kuihuar/huasu-admin/server/model/system/request"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/kuihuar/huasu-admin/server/global"
+	"github.com/kuihuar/huasu-admin/server/model/system"
+	"github.com/kuihuar/huasu-admin/server/utils"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 )

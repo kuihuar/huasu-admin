@@ -6,10 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/core/internal"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
 	"github.com/fsnotify/fsnotify"
 	"github.com/gin-gonic/gin"
+	"github.com/kuihuar/huasu-admin/server/core/internal"
+	"github.com/kuihuar/huasu-admin/server/global"
 	"github.com/spf13/viper"
 )
 

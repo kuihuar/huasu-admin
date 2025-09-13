@@ -1,11 +1,11 @@
 package example
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/common/request"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/example"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system"
-	systemService "github.com/flipped-aurora/gin-vue-admin/server/service/system"
+	"github.com/kuihuar/huasu-admin/server/global"
+	"github.com/kuihuar/huasu-admin/server/model/common/request"
+	"github.com/kuihuar/huasu-admin/server/model/example"
+	"github.com/kuihuar/huasu-admin/server/model/system"
+	systemService "github.com/kuihuar/huasu-admin/server/service/system"
 )
 
 type CustomerService struct{}

@@ -2,12 +2,13 @@ package core
 
 import (
 	"fmt"
-	"github.com/flipped-aurora/gin-vue-admin/server/core/internal"
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"os"
+
+	"github.com/kuihuar/huasu-admin/server/core/internal"
+	"github.com/kuihuar/huasu-admin/server/global"
+	"github.com/kuihuar/huasu-admin/server/utils"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"os"
 )
 
 // Zap 获取 zap.Logger

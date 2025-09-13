@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	mcpTool "github.com/flipped-aurora/gin-vue-admin/server/mcp"
+	"github.com/kuihuar/huasu-admin/server/global"
+	mcpTool "github.com/kuihuar/huasu-admin/server/mcp"
 	"github.com/mark3labs/mcp-go/server"
 )
 

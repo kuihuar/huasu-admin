@@ -6,13 +6,13 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/config"
+	"github.com/kuihuar/huasu-admin/server/config"
 	"github.com/gookit/color"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/utils"
+	"github.com/kuihuar/huasu-admin/server/utils"
 
-	"github.com/flipped-aurora/gin-vue-admin/server/global"
-	"github.com/flipped-aurora/gin-vue-admin/server/model/system/request"
+	"github.com/kuihuar/huasu-admin/server/global"
+	"github.com/kuihuar/huasu-admin/server/model/system/request"
 	"github.com/google/uuid"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
