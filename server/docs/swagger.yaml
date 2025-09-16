@@ -892,6 +892,64 @@ definitions:
     - status
     - title
     type: object
+  huasu.News:
+    properties:
+      ID:
+        description: 主键ID
+        type: integer
+      author:
+        description: 作者
+        type: string
+      category:
+        description: 新闻分类
+        type: string
+      content:
+        description: 新闻正文
+        type: string
+      cover:
+        description: 封面图
+        type: string
+      createdAt:
+        description: 创建时间
+        type: string
+      dislike:
+        description: 不点赞数
+        type: integer
+      like:
+        description: 点赞数
+        type: integer
+      link:
+        description: 链接
+        type: string
+      publishtime:
+        description: publishtime
+        type: string
+      sort:
+        description: 排名
+        type: integer
+      source:
+        description: 新闻来源
+        type: string
+      status:
+        description: 新闻状态
+        type: string
+      summary:
+        description: 新闻摘要
+        type: string
+      title:
+        description: 新闻标题
+        type: string
+      updatedAt:
+        description: 更新时间
+        type: string
+      views:
+        description: 阅读量
+        type: integer
+    required:
+    - publishtime
+    - summary
+    - title
+    type: object
   huasu.Notice:
     properties:
       ID:
@@ -4682,6 +4740,203 @@ paths:
       summary: 更新菜单
       tags:
       - Menu
+  /news/createNews:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建新闻版块
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/huasu.News'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 创建成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 创建新闻版块
+      tags:
+      - News
+  /news/deleteNews:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 删除新闻版块
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/huasu.News'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 删除新闻版块
+      tags:
+      - News
+  /news/deleteNewsByIds:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 批量删除成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 批量删除新闻版块
+      tags:
+      - News
+  /news/findNews:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用id查询新闻版块
+        in: query
+        name: ID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/huasu.News'
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 用id查询新闻版块
+      tags:
+      - News
+  /news/getNewsList:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: createdAtRange
+        type: array
+      - description: 关键字
+        in: query
+        name: keyword
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      - description: 每页大小
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/response.PageResult'
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 分页获取新闻版块列表
+      tags:
+      - News
+  /news/getNewsPublic:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  type: object
+                msg:
+                  type: string
+              type: object
+      summary: 不需要鉴权的新闻版块接口
+      tags:
+      - News
+  /news/updateNews:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 更新新闻版块
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/huasu.News'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 更新成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 更新新闻版块
+      tags:
+      - News
   /notice/createNotice:
     post:
       consumes:

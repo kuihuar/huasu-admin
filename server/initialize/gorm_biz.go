@@ -7,7 +7,7 @@ import (
 
 func bizModel() error {
 	db := global.GVA_DB
-	err := db.AutoMigrate(huasu.CarouselManage{}, huasu.Notice{})
+	err := db.AutoMigrate(huasu.CarouselManage{}, huasu.Notice{}, huasu.News{})
 	if err != nil {
 		return err
 	}
