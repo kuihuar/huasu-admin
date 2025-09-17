@@ -2191,6 +2191,9 @@ definitions:
       enable:
         description: 用户是否被冻结 1正常 2冻结
         type: integer
+      googleSecret:
+        description: 新增字段
+        type: string
       headerImg:
         description: 用户头像
         type: string
@@ -4935,6 +4938,46 @@ paths:
       security:
       - ApiKeyAuth: []
       summary: 更新新闻版块
+      tags:
+      - News
+  /notice/GetNoticePublicList:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: createdAtRange
+        type: array
+      - description: 关键字
+        in: query
+        name: keyword
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      - description: 每页大小
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/response.PageResult'
+                msg:
+                  type: string
+              type: object
+      summary: 不需要鉴权的公告接口
       tags:
       - News
   /notice/createNotice:

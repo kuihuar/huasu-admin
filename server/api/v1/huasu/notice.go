@@ -1,8 +1,11 @@
 package huasu
 
 import (
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 	"github.com/kuihuar/huasu-admin/server/global"
+	"github.com/kuihuar/huasu-admin/server/model/common/request"
 	"github.com/kuihuar/huasu-admin/server/model/common/response"
 	"github.com/kuihuar/huasu-admin/server/model/huasu"
 	huasuReq "github.com/kuihuar/huasu-admin/server/model/huasu/request"
@@ -188,4 +191,39 @@ func (noticeApi *NoticeApi) GetNoticePublic(c *gin.Context) {
 		return
 	}
 	response.OkWithData(notices, c)
+}
+
+// GetNewsPublic 不需要鉴权的公告接口
+// @Tags News
+// @Summary 不需要鉴权的公告接口
+// @Accept application/json
+// @Produce application/json
+// @Param data query huasuReq.NoticeSearch true "分页获取公告列表"
+// @Success 200 {object} response.Response{data=response.PageResult,msg=string} "获取成功"
+// @Router /notice/GetNoticePublicList [get]
+func (noticeApi *NoticeApi) GetNoticePublicList(c *gin.Context) {
+	// 创建业务用Context
+	ctx := c.Request.Context()
+
+	// 此接口不需要鉴权
+	// 示例为返回了一个固定的消息接口，一般本接口用于C端服务，需要自己实现业务逻辑
+	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
+	pageSize, _ := strconv.Atoi(c.DefaultQuery("pageSize", "10"))
+
+	search := huasuReq.NoticeSearch{
+		PageInfo: request.PageInfo{
+			Page:     page,
+			PageSize: pageSize,
+		},
+	}
+	notices, total, err := noticeService.GetNoticePublicList(ctx, search)
+	if err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败:"+err.Error(), c)
+		return
+	}
+	response.OkWithDetailed(gin.H{
+		"info":  notices,
+		"total": total,
+	}, "获取成功", c)
 }

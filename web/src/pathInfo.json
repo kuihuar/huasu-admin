@@ -20,6 +20,8 @@
   "/src/view/example/upload/upload.vue": "Upload",
   "/src/view/huasu/carouselManage/carouselManage.vue": "CarouselManage",
   "/src/view/huasu/carouselManage/carouselManageForm.vue": "CarouselManageForm",
+  "/src/view/huasu/news/news.vue": "News",
+  "/src/view/huasu/news/newsForm.vue": "NewsForm",
   "/src/view/huasu/notice/notice.vue": "Notice",
   "/src/view/huasu/notice/noticeForm.vue": "NoticeForm",
   "/src/view/init/index.vue": "Init",

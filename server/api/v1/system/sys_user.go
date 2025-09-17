@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/kuihuar/huasu-admin/server/global"
 	"github.com/kuihuar/huasu-admin/server/model/common"
 	"github.com/kuihuar/huasu-admin/server/model/common/request"
@@ -12,7 +13,6 @@ import (
 	systemReq "github.com/kuihuar/huasu-admin/server/model/system/request"
 	systemRes "github.com/kuihuar/huasu-admin/server/model/system/response"
 	"github.com/kuihuar/huasu-admin/server/utils"
-	"github.com/gin-gonic/gin"
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
 )
@@ -479,4 +479,8 @@ func (b *BaseApi) ResetPassword(c *gin.Context) {
 		return
 	}
 	response.OkWithMessage("重置成功", c)
+}
+
+func (b *BaseApi) GenerateGoogleAuth(c *gin.Context) {
+
 }

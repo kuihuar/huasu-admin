@@ -1,9 +1,9 @@
 package system
 
 import (
+	"github.com/google/uuid"
 	"github.com/kuihuar/huasu-admin/server/global"
 	"github.com/kuihuar/huasu-admin/server/model/common"
-	"github.com/google/uuid"
 )
 
 type Login interface {
@@ -31,6 +31,8 @@ type SysUser struct {
 	Email         string         `json:"email"  gorm:"comment:用户邮箱"`                                                                         // 用户邮箱
 	Enable        int            `json:"enable" gorm:"default:1;comment:用户是否被冻结 1正常 2冻结"`                                                    //用户是否被冻结 1正常 2冻结
 	OriginSetting common.JSONMap `json:"originSetting" form:"originSetting" gorm:"type:text;default:null;column:origin_setting;comment:配置;"` //配置
+	GoogleSecret  string         `json:"googleSecret" gorm:"column:google_secret;comment:Google验证密钥"`                                        // 新增字段
+
 }
 
 func (SysUser) TableName() string {
@@ -59,4 +61,7 @@ func (s *SysUser) GetAuthorityId() uint {
 
 func (s *SysUser) GetUserInfo() any {
 	return *s
+}
+func (s *SysUser) GetGoogleSecret() string {
+	return s.GoogleSecret
 }

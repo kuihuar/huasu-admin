@@ -81,3 +81,27 @@ func (noticeService *NoticeService) GetNoticePublic(ctx context.Context) ([]huas
 	err := db.Find(&list).Error
 	return list, err
 }
+
+func (noticeService *NoticeService) GetNoticePublicList(ctx context.Context, info huasuReq.NoticeSearch) (list []huasu.Notice, total int64, err error) {
+	limit := info.PageSize
+	offset := info.PageSize * (info.Page - 1)
+	// 创建db
+	db := global.GVA_DB.Model(&huasu.Notice{})
+	var notices []huasu.Notice
+	// 如果有条件搜索 下方会自动创建搜索语句
+	// if len(info.CreatedAtRange) == 2 {
+	// 	db = db.Where("created_at BETWEEN ? AND ?", info.CreatedAtRange[0], info.CreatedAtRange[1])
+	// }
+
+	err = db.Count(&total).Error
+	if err != nil {
+		return
+	}
+
+	if limit != 0 {
+		db = db.Limit(limit).Offset(offset)
+	}
+
+	err = db.Find(&notices).Error
+	return notices, total, err
+}
