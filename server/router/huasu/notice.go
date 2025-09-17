@@ -23,7 +23,8 @@ func (s *NoticeRouter) InitNoticeRouter(Router *gin.RouterGroup, PublicRouter *g
 		noticeRouterWithoutRecord.GET("getNoticeList", noticeApi.GetNoticeList) // 获取公告管理列表
 	}
 	{
-		noticeRouterWithoutAuth.GET("getNoticePublic", noticeApi.GetNoticePublic)         // 公告管理开放接口
-		noticeRouterWithoutAuth.GET("GetNoticePublicList", noticeApi.GetNoticePublicList) // 公告管理开放接口
+		noticeRouterWithoutAuth.GET("getNoticePublic", noticeApi.GetNoticePublic)             // 公告管理开放接口
+		noticeRouterWithoutAuth.GET("GetNoticePublicList", noticeApi.GetNoticePublicList)     // 公告管理开放接口
+		noticeRouterWithoutAuth.GET("GetNoticePublicDetail", noticeApi.GetNoticePublicDetail) // 公告管理开放接口
 	}
 }

@@ -4940,6 +4940,33 @@ paths:
       summary: 更新新闻版块
       tags:
       - News
+  /notice/GetNoticePublicDetail:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 公告ID
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/huasu.Notice'
+                msg:
+                  type: string
+              type: object
+      summary: 不需要鉴权的公告接口
+      tags:
+      - News
   /notice/GetNoticePublicList:
     get:
       consumes:

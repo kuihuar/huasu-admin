@@ -227,3 +227,28 @@ func (noticeApi *NoticeApi) GetNoticePublicList(c *gin.Context) {
 		"total": total,
 	}, "获取成功", c)
 }
+
+// GetNoticePublicDetail 不需要鉴权的公告接口
+// @Tags News
+// @Summary 不需要鉴权的公告接口
+// @Accept application/json
+// @Produce application/json
+// @Param id query string true "公告ID"
+// @Success 200 {object} response.Response{data=huasu.Notice,msg=string} "获取成功"
+// @Router /notice/GetNoticePublicDetail [get]
+func (noticeApi *NoticeApi) GetNoticePublicDetail(c *gin.Context) {
+	// 创建业务用Context
+	ctx := c.Request.Context()
+
+	// 此接口不需要鉴权
+	// 示例为返回了一个固定的消息接口，一般本接口用于C端服务，需要自己实现业务逻辑
+	id := c.DefaultQuery("id", "1")
+
+	notice, err := noticeService.GetNoticePublicDetail(ctx, id)
+	if err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Error(err))
+		response.FailWithMessage("获取失败:"+err.Error(), c)
+		return
+	}
+	response.OkWithData(notice, c)
+}

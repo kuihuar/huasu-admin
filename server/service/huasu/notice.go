@@ -105,3 +105,8 @@ func (noticeService *NoticeService) GetNoticePublicList(ctx context.Context, inf
 	err = db.Find(&notices).Error
 	return notices, total, err
 }
+
+func (noticeService *NoticeService) GetNoticePublicDetail(ctx context.Context, ID string) (notice huasu.Notice, err error) {
+	err = global.GVA_DB.Where("id = ?", ID).First(&notice).Error
+	return
+}
