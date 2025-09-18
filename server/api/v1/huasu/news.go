@@ -186,6 +186,7 @@ func (newsApi *NewsApi) GetNewsPublic(c *gin.Context) {
 	// 示例为返回了一个固定的消息接口，一般本接口用于C端服务，需要自己实现业务逻辑
 	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
 	pageSize, _ := strconv.Atoi(c.DefaultQuery("pageSize", "10"))
+	cate := c.DefaultQuery("category", "")
 
 	search := huasuReq.NewsSearch{
 		PageInfo: request.PageInfo{
@@ -193,6 +194,10 @@ func (newsApi *NewsApi) GetNewsPublic(c *gin.Context) {
 			PageSize: pageSize,
 		},
 	}
+	if cate != "" {
+		search.Category = cate
+	}
+
 	newsList, total, err := newsService.GetNewsPublic(ctx, search)
 	if err != nil {
 		global.GVA_LOG.Error("获取失败!", zap.Error(err))

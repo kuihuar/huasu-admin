@@ -81,6 +81,10 @@ func (newsService *NewsService) GetNewsPublic(ctx context.Context, info huasuReq
 		db = db.Where("created_at BETWEEN ? AND ?", info.CreatedAtRange[0], info.CreatedAtRange[1])
 	}
 
+	if info.Category != "" {
+		db = db.Where("category = ?", info.Category)
+	}
+
 	err = db.Count(&total).Error
 	if err != nil {
 		return
