@@ -892,6 +892,85 @@ definitions:
     - status
     - title
     type: object
+  huasu.ConstructionManage:
+    properties:
+      ID:
+        description: 主键ID
+        type: integer
+      actualcost:
+        description: 实际花费
+        type: integer
+      actualstartdate:
+        description: 实际开开日期
+        type: string
+      contractnumber:
+        description: contractnumber字段
+        type: string
+      contractor:
+        description: 建造单位
+        type: string
+      costunit:
+        description: 花费单位
+        type: string
+      createdAt:
+        description: 创建时间
+        type: string
+      description:
+        description: 工程描述
+        type: string
+      design:
+        description: 设计单位
+        type: string
+      estimatecompletion:
+        description: 预估花费
+        type: integer
+      images:
+        description: 项目展示图片
+        items:
+          type: object
+        type: array
+      initiationdate:
+        description: 开工日期
+        type: string
+      location:
+        description: 项目位置
+        type: string
+      management:
+        description: 管理单位
+        type: string
+      owner:
+        description: 责任人
+        type: string
+      pdfs:
+        description: 项目文档
+        items:
+          type: object
+        type: array
+      plannedfinishdate:
+        description: 计划结束日期
+        type: string
+      projectmanager:
+        description: projectmanager字段
+        type: string
+      scheduleddate:
+        description: 开工日期
+        type: string
+      title:
+        description: 工程名
+        type: string
+      type:
+        description: 工程类型
+        type: string
+      updatedAt:
+        description: 更新时间
+        type: string
+      video:
+        description: 项目视频
+        type: string
+      vudgetedcost:
+        description: vudgetedcost字段
+        type: integer
+    type: object
   huasu.News:
     properties:
       ID:
@@ -3737,6 +3816,222 @@ paths:
       summary: 获取权限列表
       tags:
       - Casbin
+  /constructionManage/createConstructionManage:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建工程管理
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/huasu.ConstructionManage'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 创建成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 创建工程管理
+      tags:
+      - ConstructionManage
+  /constructionManage/deleteConstructionManage:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 删除工程管理
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/huasu.ConstructionManage'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 删除成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 删除工程管理
+      tags:
+      - ConstructionManage
+  /constructionManage/deleteConstructionManageByIds:
+    delete:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 批量删除成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 批量删除工程管理
+      tags:
+      - ConstructionManage
+  /constructionManage/findConstructionManage:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 用id查询工程管理
+        in: query
+        name: ID
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/huasu.ConstructionManage'
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 用id查询工程管理
+      tags:
+      - ConstructionManage
+  /constructionManage/getConstructionManageList:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: createdAtRange
+        type: array
+      - description: 关键字
+        in: query
+        name: keyword
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      - description: 每页大小
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/response.PageResult'
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 分页获取工程管理列表
+      tags:
+      - ConstructionManage
+  /constructionManage/getConstructionManagePublic:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - collectionFormat: csv
+        in: query
+        items:
+          type: string
+        name: createdAtRange
+        type: array
+      - description: 关键字
+        in: query
+        name: keyword
+        type: string
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      - description: 每页大小
+        in: query
+        name: pageSize
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                data:
+                  $ref: '#/definitions/response.PageResult'
+                msg:
+                  type: string
+              type: object
+      summary: 不需要鉴权的工程管理接口
+      tags:
+      - ConstructionManage
+  /constructionManage/updateConstructionManage:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 更新工程管理
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/huasu.ConstructionManage'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 更新成功
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                msg:
+                  type: string
+              type: object
+      security:
+      - ApiKeyAuth: []
+      summary: 更新工程管理
+      tags:
+      - ConstructionManage
   /customer/customer:
     delete:
       consumes:
@@ -4854,6 +5149,9 @@ paths:
       consumes:
       - application/json
       parameters:
+      - in: query
+        name: category
+        type: string
       - collectionFormat: csv
         in: query
         items:

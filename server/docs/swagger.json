@@ -2628,6 +2628,383 @@
                 }
             }
         },
+        "/constructionManage/createConstructionManage": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConstructionManage"
+                ],
+                "summary": "创建工程管理",
+                "parameters": [
+                    {
+                        "description": "创建工程管理",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/huasu.ConstructionManage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "创建成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/constructionManage/deleteConstructionManage": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConstructionManage"
+                ],
+                "summary": "删除工程管理",
+                "parameters": [
+                    {
+                        "description": "删除工程管理",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/huasu.ConstructionManage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "删除成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/constructionManage/deleteConstructionManageByIds": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConstructionManage"
+                ],
+                "summary": "批量删除工程管理",
+                "responses": {
+                    "200": {
+                        "description": "批量删除成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/constructionManage/findConstructionManage": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConstructionManage"
+                ],
+                "summary": "用id查询工程管理",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用id查询工程管理",
+                        "name": "ID",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "查询成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/huasu.ConstructionManage"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/constructionManage/getConstructionManageList": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConstructionManage"
+                ],
+                "summary": "分页获取工程管理列表",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "name": "createdAtRange",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "关键字",
+                        "name": "keyword",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页大小",
+                        "name": "pageSize",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "获取成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/response.PageResult"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/constructionManage/getConstructionManagePublic": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConstructionManage"
+                ],
+                "summary": "不需要鉴权的工程管理接口",
+                "parameters": [
+                    {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "name": "createdAtRange",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "关键字",
+                        "name": "keyword",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页大小",
+                        "name": "pageSize",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "获取成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/response.PageResult"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/constructionManage/updateConstructionManage": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConstructionManage"
+                ],
+                "summary": "更新工程管理",
+                "parameters": [
+                    {
+                        "description": "更新工程管理",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/huasu.ConstructionManage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "更新成功",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "/customer/customer": {
             "get": {
                 "security": [
@@ -4602,6 +4979,11 @@
                 ],
                 "summary": "分页获取新闻版块列表",
                 "parameters": [
+                    {
+                        "type": "string",
+                        "name": "category",
+                        "in": "query"
+                    },
                     {
                         "type": "array",
                         "items": {
@@ -9464,6 +9846,113 @@
                 "updatedAt": {
                     "description": "更新时间",
                     "type": "string"
+                }
+            }
+        },
+        "huasu.ConstructionManage": {
+            "type": "object",
+            "properties": {
+                "ID": {
+                    "description": "主键ID",
+                    "type": "integer"
+                },
+                "actualcost": {
+                    "description": "实际花费",
+                    "type": "integer"
+                },
+                "actualstartdate": {
+                    "description": "实际开开日期",
+                    "type": "string"
+                },
+                "contractnumber": {
+                    "description": "contractnumber字段",
+                    "type": "string"
+                },
+                "contractor": {
+                    "description": "建造单位",
+                    "type": "string"
+                },
+                "costunit": {
+                    "description": "花费单位",
+                    "type": "string"
+                },
+                "createdAt": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "工程描述",
+                    "type": "string"
+                },
+                "design": {
+                    "description": "设计单位",
+                    "type": "string"
+                },
+                "estimatecompletion": {
+                    "description": "预估花费",
+                    "type": "integer"
+                },
+                "images": {
+                    "description": "项目展示图片",
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "initiationdate": {
+                    "description": "开工日期",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "项目位置",
+                    "type": "string"
+                },
+                "management": {
+                    "description": "管理单位",
+                    "type": "string"
+                },
+                "owner": {
+                    "description": "责任人",
+                    "type": "string"
+                },
+                "pdfs": {
+                    "description": "项目文档",
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "plannedfinishdate": {
+                    "description": "计划结束日期",
+                    "type": "string"
+                },
+                "projectmanager": {
+                    "description": "projectmanager字段",
+                    "type": "string"
+                },
+                "scheduleddate": {
+                    "description": "开工日期",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "工程名",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "工程类型",
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "description": "更新时间",
+                    "type": "string"
+                },
+                "video": {
+                    "description": "项目视频",
+                    "type": "string"
+                },
+                "vudgetedcost": {
+                    "description": "vudgetedcost字段",
+                    "type": "integer"
                 }
             }
         },

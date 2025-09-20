@@ -6,10 +6,12 @@ type RouterGroup struct {
 	CarouselManageRouter
 	NoticeRouter
 	NewsRouter
+	ConstructionManageRouter
 }
 
 var (
-	CarouselApi = api.ApiGroupApp.HuasuApiGroup.CarouselManageApi
-	noticeApi   = api.ApiGroupApp.HuasuApiGroup.NoticeApi
-	newsApi     = api.ApiGroupApp.HuasuApiGroup.NewsApi
+	CarouselApi           = api.ApiGroupApp.HuasuApiGroup.CarouselManageApi
+	noticeApi             = api.ApiGroupApp.HuasuApiGroup.NoticeApi
+	newsApi               = api.ApiGroupApp.HuasuApiGroup.NewsApi
+	constructionManageApi = api.ApiGroupApp.HuasuApiGroup.ConstructionManageApi
 )
